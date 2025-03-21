@@ -1,0 +1,4 @@
+# required packages
+#matplot == 0.1.9 not sure if I need this if I already specify matplotlib
+matplotlib == 3.10.1
+numpy == 2.2.4
