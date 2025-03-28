@@ -4,8 +4,10 @@
 ### +CREATE A __INIT__.PY FILE TO INITIALIZE THE PACKAGE
 ### +ADD __MAIN__ CONSTRUCTORS IN EACH MODULE TO SUPPORT SCRIPT/BASH CALLING FROM COMMAND LINE
 ### ^EXTENDING ON __MAIN__> CREATE EXECUTABLE/.BAT SUPPORTS TO SIMPLIFY RUNNING FUNCTIONS INTO A COMMAND LINE PIPELINE> ONE LINE IN CMD LINE TO RUN THE PROCESS THE USER WANTS
-### +IMPORTANT: CREATE REQUIREMENTS.TXT AND ADD THIS TO __MAIN__ TO INSTANTLY DOWNLOAD ALL REQUIRED LIBRARIES AND PACKAGES (CSV, GZIP, NUMPY, MATPLOTLIBPYPLOT, PANDAS, SEABORN)
+### ^SAVE PLOT FIGURES INTO OUT DIR *********
+### +IMPORTANT: CREATE REQUIREMENTS.TXT AND ADD THIS TO __MAIN__ TO INSTANTLY DOWNLOAD ALL REQUIRED LIBRARIES AND PACKAGES (CSV, GZIP, NUMPY, MATPLOTLIBPYPLOT, PANDAS, REGEX, SEABORN)
 ### +CREATE BENCHMARKING GUIDELINES (ESTIMATION OF HOW LONG EACH FUNCTION/MODULES CAN TAKE TO RUN)
+
 """
 Aldente Fasta Module:/PACKAGE (EXPAND ON THIS PROJECT TO MAKE INTO PACKAGE)
 
@@ -173,8 +175,10 @@ def quals_boxplot(file):
         xlabels+=1
         xlist.append(xlabels)
 
+
     plt.xticks(rotation=90) #Make xtick values readable, as if they are lined up along the horizon, the values overlap each other making it unreadable, so I rotate it sideways to prevent overlapping texts
     plt.ylabel('Quality Score')
+    plt.grid(True)
     plt.show()
 
     del nparray #clear mem space
@@ -195,7 +199,7 @@ def line_counter(file):
 
     return lines
 
-def head(file, num):
+def head(file, num, gz):
     """
     Shows a preview of first <num> lines of a file
     :param file: File
@@ -205,16 +209,32 @@ def head(file, num):
     count=0
     head_list=[]
 
-    with open(file, 'r') as filein:
+    if gz==True:#OPEN WITH GZIP
 
-        for line in filein:
-            count+=1
-            line=line.rstrip() #remove formatting (eg '\n' and trailing artefacts)
-            if count<=num:
-                print(line)
-                head_list.append(line)
+        with gzip.open(file, 'r') as filein:
 
-            else: break
+            for line in filein:
+                count += 1
+                line = line.rstrip()  # remove formatting (eg '\n' and trailing artefacts)
+                if count <= num:
+                    #print(line)
+                    head_list.append(line)
+
+                else:
+                    break
+
+    elif gz==False:#IF FILE IS NOT ZIPPED
+
+        with open(file, 'r') as filein:
+
+            for line in filein:
+                count+=1
+                line=line.rstrip() #remove formatting (eg '\n' and trailing artefacts)
+                if count<=num:
+                    #print(line)
+                    head_list.append(line)
+
+                else: break
 
     return head_list
 
@@ -222,8 +242,8 @@ def subset(file, out, num):
 #USED FOR TESTING> TAKE A SUBSET OF <NUM> LINES FROM <FILE> TO OUTPUT INTO <OUT>
 
     count=0
-    with open(file,'r') as filein:
-        with open(out, 'w') as fileout:
+    with open(file,'r') as filein: #GZIP FOR ZIP FILES
+        with open(out, 'w') as fileout: #WB FOR BNIARY
 
             for line in filein:
                 count+=1
