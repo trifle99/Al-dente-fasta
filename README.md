@@ -13,7 +13,7 @@
 ## About the project
 
 This is a python project I started to help practice my python coding and improve my understanding of sequencing data.
-I created a python version of FastQC where this package 'Al-Dente Fasta' parses fastq files and allows you to check quality control of sequencing datasets.
+I created a python version of FastQC where this package 'Al-Dente Fasta' parses fastq files and allows you to perform quality control tests on sequencing datasets.
 
 Currently, this tool only works on fastq files where all reads are the same length.
 The analysis it provides are:
