@@ -32,7 +32,7 @@ To use this package, you can first install it by using:
 ```pip install al-dente-fasta==0.1.0```
 
 ### Running quality control analysis:
-1. Per base position quality score across each read
+1. [Per base position quality score across each read](/images/Figure_1.png)
    
    (Box plot analysis > shows the distribution of quality scores of each base position across each read in a box plot)
    ```
@@ -42,7 +42,7 @@ To use this package, you can first install it by using:
    afp.quals_boxplot('path/to/file_out/qual_convert')
    ```
 
-2. Per read average quality score count
+2. [Per read average quality score count](/images/Figure_2.png)
    
    (Takes the average quality score per read and shows a plot to visualize the counts distribution)
    ```
@@ -53,7 +53,7 @@ To use this package, you can first install it by using:
    
    ```
 
-3. Per read GC% content count
+3. [Per read GC% content count](/images/Figure_3.png)
    
    (Takes the GC% content per read and shows a plot to visualize the counts distribution)
    ```
@@ -63,7 +63,7 @@ To use this package, you can first install it by using:
    afcg.counts_graph('path/to/file_out/gc_per_read', histo_or_kde, 'gc')
    ```
 
-4. Per base position DNA Base% content across all reads
+4. [Per base position DNA Base% content across all reads](/images/Figure_4.png)
    
    (Plot showing the distribution of each nucleotide base across base positions for each read)
    ```
@@ -73,7 +73,7 @@ To use this package, you can first install it by using:
 
    ```
    
-5. Per base position N base% content across all reads
+5. [Per base position N base% content across all reads](/images/Figure_5.png)
     
    (Plot showing the distribution of N (unknown base where sequencer cannot determine base or encounters an error) across base positions for each read)
    ```
@@ -81,7 +81,7 @@ To use this package, you can first install it by using:
    afnb.n_graph('path/to/file_in/fastq.gz'
    ```
    
-6. Per base position average quality score across each tile heatmap
+6. [Per base position average quality score across each tile heatmap](/images/Figure_6.png)
     
    (Illumina sequencers only: shows heatmap of average quality scores of base positions for each read according to their tile number.)
    ```
@@ -92,7 +92,11 @@ To use this package, you can first install it by using:
    result=afts.tile_link('path/to/file_out/tile_num', 'path/to/file_out/qual_out', enc')
    afts.heat_map(result)
    ```
-   
+
+### Benchmarks
+
+Fastq files are very large files even when compressed as they can contain information about millions of reads, therefore processing them can take some time.
+I have added a [benchmark](benchmarks.txt) file which gives guidelines how long each module/function can take for a [fastq](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001182785.1/) file containing ~7million reads.
 
 
 <!-- LICENSE -->
@@ -104,3 +108,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 
 * [FastQC Documenation](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)
+
+<!-- PyPi -->
+## PyPi
+[PyPi](https://pypi.org/project/al-dente-fasta/0.1.0/#description)
