@@ -25,7 +25,7 @@ def counts_graph(file, histo_or_kde, gc_or_qual):
     :return: Graph plot
     """
 
-    if gc_or_qual=='qs':
+    if gc_or_qual=='qual':
         xlimplot=40
         xlabelplot='Quality Score'
     elif gc_or_qual=='gc':
