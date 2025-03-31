@@ -33,4 +33,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 
 * [FastQC Documenation](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)
-
