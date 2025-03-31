@@ -20,7 +20,7 @@ def counts_graph(file, histo_or_kde, gc_or_qual):
     #^ todo: file detection for correct file format
     """
     Takes file containing average quality scores of each read and visualize into graphs
-    :param file: <aldente_fasta.avg_quals>
+    :param file: <aldente_fasta.avg_quals> or <gc_per_read>
     :param histo_or_kde: <0,1,2> Shows different graphs according to number
     :return: Graph plot
     """
