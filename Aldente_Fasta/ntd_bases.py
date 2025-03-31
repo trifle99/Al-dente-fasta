@@ -14,11 +14,17 @@ import gzip
 import matplotlib.pyplot as plt
 
 def base_count(file):
-    ###takes a fastq file and returns dict of base content in all reads
+    """
+    Takes a fastq file and returns a dictionary containing total base counts of all reads
+    :param file: fastq file
+    :return: Dictionary containing base counts
+    """
+
 
     base_dict={'A':0,'C':0,'T':0,'G':0,'N':0}
     bases=['A','C','T','G','N']
     line_no=0
+
     with gzip.open(file, 'r') as fastq:
 
         for line in fastq:
@@ -26,7 +32,7 @@ def base_count(file):
 
             if (line_no % 2 == 0) and (line_no % 4 == 2):  # If statement to check every 2nd sequence line of each reads (fastqfile has a 4 line repeating format containing read information)
                 for base in line:
-                    if base in bases:
+                    if base in bases: #counting bases:
                         base_dict[base]+=1
 
     return base_dict
@@ -135,7 +141,11 @@ def base_pos_count(file):
 ########################
 
 def base_graphs(file):
-
+    """
+    Takes a fastq file and returns a graph of base content in each sequence position for each read
+    :param file: fastq file
+    :return: a graph of base position content per read
+    """
     first,res,res_gc=base_pos_count(file)
 
     #Plotting each base's data as a line
@@ -144,7 +154,6 @@ def base_graphs(file):
     plt.plot(res['C%'],label='C%')
     plt.plot(res['T%'],label='T%')
     plt.plot(res['G%'],label='G%')
-    plt.plot(res['N%'], label='N%')
     plt.plot(res_gc['GC%'],label='GC%')
 
     # Creating true xlabels since python counts from 0, but we want to show base seq position which starts from 1 to 100.
@@ -173,3 +182,33 @@ def base_graphs(file):
 ########################
 ########################
 
+def n_graph(file):
+    """
+    Takes a fastq file and returns a graph of N base content in each sequence position for each read
+    :param file: fastq file
+    :return: a graph of N base position content per read
+    """
+
+    first, res, res_gc = base_pos_count(file)
+    plt.plot(res['N%'], label='N%')
+
+    # Creating true xlabels since python counts from 0, but we want to show base seq position which starts from 1 to 100.
+    xlabel = []
+    xlabelold = []
+    count = 0
+
+    for x in res['A%']:
+        xlabelold.append(count)
+        count += 1
+        xlabel.append(count)
+
+    plt.xlabel('Base position')
+    plt.ylabel('%')
+    plt.title('Sequence N% in each base position across all reads')
+    plt.xticks(ticks=xlabelold, labels=xlabel, rotation=90)
+    #plt.ylim(0, 100)
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    return

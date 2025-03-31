@@ -16,9 +16,6 @@ This module contains functions for illumina sequenced files to process tile seq 
 import re #for regex
 import gzip #read gz compressed files
 import numpy as np #process array matrices
-
-#DOWNLOAD THESE, HAVE TO PUT IN REQUIREMENTS.TXT
-
 import pandas as pd #to load data from raw file into pd dataframe
 import seaborn as sns #for plotting graphs
 import matplotlib.pyplot as plt #for plotting graphs
