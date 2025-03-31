@@ -1,10 +1,10 @@
 """
-MODULE INFO
+Aldente Fasta: Tile sequences Module
+
+This module contains functions for processing nucleotide bases and plotting that data into graphs.
+
 """
 
-
-#WHAT ABOUT SEQUENCES OF DIFFERENT LENGTH?
-#WILL MY BASE SEQUENCE QUALITY SCORE STILL WORK IF READS ARE DIFFERENT LENGTH?...
 
 ########################
 ########################
@@ -47,7 +47,7 @@ def base_pos_count(file):
     #TODO: Add support for when read sequences are different lengths
     #TODO: Improve efficiency and speed of this code...try minimize the loops
 
-    import aldente_fasta as af #calling af.head function for intializing first part:
+    import preprocess as af #calling af.head function for intializing first part:
 
     #Initializing variables for this func
     a=[]
