@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "al-dente_fasta"
+version = "0.1.0"
+authors = [{ name = "garu", email = "tastytrifle@gmail.com" }]
+description = "Tool to analyze quality control of fastq files"
+readme = "README.md"
+license = "MIT"
+keywords = ["FastQC", "fastq", "bioinformatics", "sequencing", "genetics"]
+license-files = ["LICENSE.txt"]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=2.2.4",
+    "matplotlib>=3.10.1",
+    "pandas>=2.2.3",
+    "seaborn>=0.13.2",
+]
