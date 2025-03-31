@@ -136,31 +136,6 @@ def qual_convert(file, out, enc):
 ################################
 ################################
 
-def avg_quals(file, out):
-    """
-    Creates a 2d np array from file and outputs a file containing average quality score of each read
-    :param file: Input file containing quality scores (numerical value after <qual_convert>) of each base in each read
-    :param out: Output file containing average quality score of each read
-    :return: param out
-    """
-    nparray=np.loadtxt(file, delimiter=',') #//np.genfromtxt (from numpy import genfromtxt)
-    #^ Loads all data into nparray, this can take a while depending file size
-    reads_avg=(np.sum(nparray, axis=1))/(len(nparray[0])) #Calculate average of each read TODO: BUG ALERT: IMPORTANT: This assumes each reads are the same length>divide by length of that specific read>add a for loop to iterate over nparray, and sum that nparray[x]
-
-    with open(out,'w') as out:
-        #Write each read average into a file <out>
-        for x in reads_avg:
-            out.write(str(x)+'\n') #'\n' needed to add new line #ALSO> Change <str> support to write as <float> or <int> straight in, (To support int/float write in, I might have to write into csv files)
-            #IF writing csv files, add a out.write('') as a header to make it empty, so the values can index correctly from 1,2,3...etc
-
-    del nparray #Deleting just to clear memory space
-
-    return
-
-################################
-################################
-################################
-
 def quals_boxplot(file):
     #TODO: Error exceptions to check for read seq lengths, as for this boxplot to run>each read has to be same seq length
     """
