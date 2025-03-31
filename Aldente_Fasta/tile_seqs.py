@@ -1,5 +1,8 @@
 """
-MODULE INFO
+Aldente Fasta: Tile sequences Module
+
+This module contains functions for illumina sequenced files to process tile seq id's and quality scores.
+
 """
 ################################
 ################################
