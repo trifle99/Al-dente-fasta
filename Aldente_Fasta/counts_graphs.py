@@ -1,5 +1,8 @@
 """
-MODULE INFO
+Aldente Fasta: Tile sequences Module
+
+This module contains functions for visualizing quality scores and gc content into graph plots.
+
 """
 
 
@@ -12,7 +15,7 @@ import gzip
 ###################################
 ###################################
 
-def counts_graph(file, histo_or_kde):
+def counts_graph(file, histo_or_kde, gc_or_qual):
     #TODO: Add error exceptions...
     #^ todo: file detection for correct file format
     """
@@ -21,6 +24,13 @@ def counts_graph(file, histo_or_kde):
     :param histo_or_kde: <0,1,2> Shows different graphs according to number
     :return: Graph plot
     """
+
+    if gc_or_qual=='qs':
+        xlimplot=40
+        xlabelplot='Quality Score'
+    elif gc_or_qual=='gc':
+        xlimplot=100
+        xlabelplot='GC content'
 
     data=np.loadtxt(file) #Load data from <avg_quals>
 
@@ -41,9 +51,9 @@ def counts_graph(file, histo_or_kde):
                      edgecolor='white', #Better visualization for histogram+KDE lines
                      linewidth=0.5) #Better visualization of KDE line
 
-        #plt.xlim(0,40) #Set limits on x-axis
+        plt.xlim(0,xlimplot) #Set limits on x-axis
         plt.title(histo_title)
-        plt.xlabel('Quality Score')
+        plt.xlabel(xlabelplot)
 
         plt.show()
 
@@ -53,8 +63,8 @@ def counts_graph(file, histo_or_kde):
 
         sns.kdeplot(data)
 
-        #plt.xlim(0, 40)
-        plt.title('Density estimation of quality scores among reads')
+        plt.xlim(0, xlimplot)
+        plt.title('Density estimation of '+xlabelplot+' of every read')
         plt.show()
     else: print('Enter a value of 0 or 1 for <histo_or_kde>. 0 for histoplot, 1 for kde plot. (2 for custom histoplot with added kde overlay)')
     return
@@ -64,8 +74,12 @@ def counts_graph(file, histo_or_kde):
 ###################################
 
 def gc_per_read(file,out):
-
-
+    """
+    Takes a fastq file and writes the GC percent of each read into <out> file
+    :param file: Fastq gz compressed file
+    :param out: File containing GC percent of each read
+    :return: <param out>
+    """
     line_no=0
     gc=['G','C']
     gc_count=0
@@ -80,29 +94,16 @@ def gc_per_read(file,out):
                 line_no+=1
 
                 if (line_no % 2 == 0) and (line_no % 4 == 2):  # If statement to check every 2nd sequence line of each reads (fastqfile has a 4 line repeating format containing read information)
-
+                    lenseq=len(line)
                     for bases in line:
                         if bases in gc:
-                            gc_count+=1
-                    outfile.write((str(gc_count))+'\n') #string to write in
+                            gc_count+=1 #increment by one for each base (g or c) found in read
+                    outfile.write((str(100*(gc_count/lenseq)))+'\n') #string to write in
                     gc_count=0
 
 
     return
 
-
-# file=('C:\\Users\\gaura\\Documents\\Python Learning\\Projects\\fastq parse\\SRR2093871_1.fastq.gz')
-# file2=('C:\\Users\\gaura\\Documents\\Python Learning\\Projects\\fastq parse\\out\\srr2093871_1_subset.txt')
-#
-# out=('C:\\Users\\gaura\\Documents\\Python Learning\\Projects\\fastq parse\\out\\gc_per_read.txt')
-# out1=('C:\\Users\\gaura\\Documents\\Python Learning\\Projects\\fastq parse\\out\\avg_quals')
-# import time
-#
-# start=time.time()
-# counts_graph(out1,0)
-# end=time.time()
-#
-# print(end-start)
-
-#ADD IF STATEMENTS TO <COUNTS_GRAPH> AND ANOTHER PARAM ARG TO DISTINGUISH USING COUNTS FOR AVG_QUALITY_SCORES OR GC_MEAN_CONTENT>
-#THEN TAILOR IF STATEMENTS FOR PLOT ARGUEMENTS (BINS, AXIS-LIMS, AXIS LABELS, PLOT TITLE ETC)
+################################
+################################
+################################
