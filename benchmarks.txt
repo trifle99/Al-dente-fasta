@@ -1,6 +1,10 @@
 Al-Dente Fasta
 Benchmarks:
 
+<function>
+{results}
+[time taken in seconds]
+
 quals boxplot:
 <summary>
 {'reads': 7022387.0, 'A count': 222500881, 'C count': 128502570, 'T count': 224049496, 'G count': 127141349, 'N count': 44404, 'GC%': 36.4, 'Total Bases': 702238700}
@@ -31,14 +35,6 @@ counts graphs:
 <counts_graph> #(2, gc)
 75.31239223480225
 
-tile seqs heat maps:
-<tile_num>
-22.11363124847412
-<tile_link> 
-86.29291367530823
-<heat_map>
-12.963893413543701
-
 ntd bases:
 <base_count>
 58.65346360206604 
@@ -48,3 +44,12 @@ ntd bases:
 137.98938536643982
 <n_graph>
 160.1754446029663
+
+tile seqs heat maps:
+<tile_num>
+22.11363124847412
+<tile_link> 
+86.29291367530823
+<heat_map>
+12.963893413543701
+
