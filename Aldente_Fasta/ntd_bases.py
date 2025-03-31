@@ -144,6 +144,7 @@ def base_graphs(file):
     plt.plot(res['C%'],label='C%')
     plt.plot(res['T%'],label='T%')
     plt.plot(res['G%'],label='G%')
+    plt.plot(res['N%'], label='N%')
     plt.plot(res_gc['GC%'],label='GC%')
 
     # Creating true xlabels since python counts from 0, but we want to show base seq position which starts from 1 to 100.
