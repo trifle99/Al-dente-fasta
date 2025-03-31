@@ -1,0 +1,50 @@
+Al-Dente Fasta
+Benchmarks:
+
+quals boxplot:
+<summary>
+{'reads': 7022387.0, 'A count': 222500881, 'C count': 128502570, 'T count': 224049496, 'G count': 127141349, 'N count': 44404, 'GC%': 36.4, 'Total Bases': 702238700}
+25.44805932044983
+<qual_out>
+17.671298503875732
+<qual_convert>
+122.42080593109131
+quals_boxplot
+137.5113763809204
+
+counts graphs:
+<avg_quals> 
+99.0557713508606
+<gc_per_read>
+51.63966727256775
+<counts_graph> #(0, qual)
+25.504814624786377
+<counts_graph> #(1, qual)
+77.99988055229187
+<counts_graph> #(2, qual)
+78.27188658714294
+
+<counts_graph> #(0, gc)
+7.897765874862671
+<counts_graph> #(1, gc)
+73.41366696357727
+<counts_graph> #(2, gc)
+75.31239223480225
+
+tile seqs heat maps:
+<tile_num>
+22.11363124847412
+<tile_link> 
+86.29291367530823
+<heat_map>
+12.963893413543701
+
+ntd bases:
+<base_count>
+58.65346360206604 
+<base_pos_count>
+126.48740649223328
+<base_graphs>
+137.98938536643982
+<n_graph>
+160.1754446029663
