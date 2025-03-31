@@ -107,7 +107,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [FastQC Documenation](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)
+[FastQC Documenation](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)
 
 <!-- PyPi -->
 ## PyPi
