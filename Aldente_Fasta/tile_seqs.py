@@ -16,9 +16,6 @@ This module contains functions for illumina sequenced files to process tile seq 
 import re #for regex
 import gzip #read gz compressed files
 import numpy as np #process array matrices
-
-#DOWNLOAD THESE, HAVE TO PUT IN REQUIREMENTS.TXT
-
 import pandas as pd #to load data from raw file into pd dataframe
 import seaborn as sns #for plotting graphs
 import matplotlib.pyplot as plt #for plotting graphs
@@ -76,7 +73,7 @@ def tile_link(tile_num, qual_out, enc):
     Takes raw files of tile numbers and quality scores of fastq files and the encoding value to return the averages of the quality score of each base position in each tile number
     :param tile_num: File containing tile numbers of your fastq file (<tile_num> func)
     :param qual_out: File containing raw quality scores of your fastq file (<aldente_fasta.qual_out>
-    :param enc: A number value of 33 or 64 to decode raw quality scores
+    :param enc: A number value of 33 or 64 to decode raw quality scores (64 for Illumina 1.0-1.8, 33 for Sanger and Illumina 1.8+)
     :return: Dictionary containing average scores of each base positions quality score grouped by its tile number
     """
 
