@@ -96,7 +96,7 @@ To use this package, you can first install it by using:
 ### Benchmarks
 
 Fastq files are very large files even when compressed as they can contain information about millions of reads, therefore processing them can take some time.
-I have added a [benchmark](benchmarks.txt) file which gives guidelines how long each module/function can take for a [fastq](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001182785.1/) file containing ~7million reads.
+I have added a [benchmark](benchmarks.txt) file which gives guidelines how long each module/function can take for a [fastq](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001182785.1/)([SRR2093871_1.fastq.gz](https://www.ebi.ac.uk/ena/browser/view/PRJNA288953)) file containing ~7million reads.
 
 
 <!-- LICENSE -->
